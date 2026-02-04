@@ -39,10 +39,9 @@ def crawl_weather(province_url):
 
     return data
 
-url = "http://www.weather.com.cn/textFC/hb.shtml"
-weather_data = crawl_weather(url)
-
-df = pd.DataFrame(weather_data, columns=["城市", "天气", "最高温度", "最低温度"])
-df.to_csv("weather_data.csv", index=False, encoding="utf-8-sig")
-print("爬取完成，数据已保存到 weather_data.csv")
-print(df.head())
+def crawl_weather2(url, name):
+    weather_data = crawl_weather(url)
+    df = pd.DataFrame(weather_data, columns=["城市", "天气", "最高温度", "最低温度"])
+    df.to_csv(f"{name}.csv", index=False, encoding="utf-8-sig")
+    print(f"爬取完成，数据已保存到 {name}.csv")
+    print(df.head())
