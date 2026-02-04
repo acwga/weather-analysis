@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+import random
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0"
@@ -32,7 +33,7 @@ def crawl_weather(province_url):
                 low_temp = tds[7].text.strip()
                 data.append([city, weather, high_temp, low_temp])
         
-        time.sleep(1) # 避免请求过快
+        time.sleep(random.uniform(1, 3)) # 避免请求过快
 
     except Exception as e:
         print(f"爬取失败: {e}")
